@@ -27,6 +27,7 @@ $(document).ready(function() {
             console.log(err);
         } catch (e) {
             /*fail silently*/
+            alert("FAIL");
         }
     }
 });
@@ -55,7 +56,7 @@ var home = function() {
 
 var github_user = function(username, callback) {
     $.getJSON('https://api.github.com/users/' + username + '?callback=?', callback);
-}
+};
 
 var github_user_repos = function(username, callback, page_number, prev_data) {
     var page = (page_number ? page_number : 1),
@@ -73,11 +74,11 @@ var github_user_repos = function(username, callback, page_number, prev_data) {
             callback(data);
         }
     });
-}
+};
 
 var github_user_orgs = function(username, callback) {
     $.getJSON('https://api.github.com/users/' + username + '/orgs?callback=?', callback);
-}
+};
 
 var run = function() {
     var itemCount = 0,
@@ -153,7 +154,7 @@ var run = function() {
 
         function sortByPopularity(a, b) {
             return b.popularity - a.popularity;
-        };
+        }
 
         sorted.sort(sortByPopularity);
 
@@ -198,7 +199,7 @@ var run = function() {
                         percent = parseInt((lang.popularity / languageTotal) * 100);
                         li = $('<li>' + lang.toString() + ' ('+percent+'%)</li>');
                         
-                        if (x % 3 == 0 || (languages.length < 3 && i == languages.length - 1)) {
+                        if (x % 3 === 0 || (languages.length < 3 && i == languages.length - 1)) {
                             li.attr('class', 'last');
                             ul.append(li);
                             $('#content-languages').append(ul);
@@ -241,7 +242,7 @@ var run = function() {
                             watchers: repo.info.watchers,
                             forks: repo.info.forks,
                             watchersLabel: repo.info.watchers > 1 ? 'watchers' : 'watcher',
-                            forksLabel: repo.info.forks > 1 ? 'forks' : 'fork',
+                            forksLabel: repo.info.forks > 1 ? 'forks' : 'fork'
                         };
 
                         if (itemCount == sorted.length - 1 || itemCount == maxItems - 1) {
