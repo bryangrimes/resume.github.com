@@ -16,18 +16,17 @@ var trackerId = 'UA-21222559-1';
 
 $(document).ready(function() {
     try {
-        if (urlParams[0] !== undefined) {
-            username = urlParams[0];
+       // if (urlParams[0] !== undefined) {
+            username = 'bryangrimes';
             run();
-        } else {
-            home();
-        }
+      //  } else {
+      //      home();
+      //  }
     } catch (err) {
         try {
             console.log(err);
         } catch (e) {
             /*fail silently*/
-            alert("FAIL");
         }
     }
 });
@@ -103,6 +102,7 @@ var run = function() {
         var view = {
             name: name,
             email: data.email,
+            avatar: data.avatar_url,
             created_at: data.created_at,
             location: data.location,
             gravatar_id: data.gravatar_id,
